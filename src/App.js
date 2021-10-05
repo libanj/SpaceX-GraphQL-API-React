@@ -1,25 +1,22 @@
-import './App.css';
-import ColumnItem from './ColumnItem';
+import "./App.scss";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./Home";
+import Ship from "./Ship";
 
 function App() {
   return (
-		<div className="App">
-			<div className="column-items">
-				<ColumnItem />
-				<ColumnItem />
-				<ColumnItem />
-				<ColumnItem />
-				<ColumnItem />
-				<ColumnItem />
-				<ColumnItem />
-				<ColumnItem />
-				<ColumnItem />
-				<ColumnItem />
-				<ColumnItem />
-				<ColumnItem />
-				<ColumnItem />
-			</div>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/mission/:id">
+            <Ship />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

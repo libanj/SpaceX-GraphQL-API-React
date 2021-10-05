@@ -1,0 +1,72 @@
+.App {
+  padding: 1% 5%;
+
+  .title {
+    text-align: center;
+  }
+}
+
+.column-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  justify-content: space-between;
+  grid-gap: 20px;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      transition: 0.5s all;
+    }
+
+    .overlay {
+      transition: 0.5s all;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      opacity: 0;
+      color: white;
+
+      h3 {
+        margin: unset;
+      }
+
+      .text {
+        font-size: 11px;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+
+      .overlay {
+        opacity: 1;
+      }
+      img {
+        transform: scale(1.2);
+        -webkit-filter: blur(2px);
+        filter: blur(2px) grayscale(100%) brightness(50%);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 466px) {
+  .column-items {
+    justify-content: center;
+  }
+}
