@@ -1,12 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import "./App.scss";
-import ColumnItem from "./ColumnItem";
-import { SHIPS } from "./queries";
+import { LAUNCHES } from "./queries";
 import { useQuery } from "@apollo/client";
 
 function Home() {
-  const { loading, error, data } = useQuery(SHIPS);
-
+  const { loading, error, data } = useQuery(LAUNCHES);
+  const ColumnItem = React.lazy(() => import("./ColumnItem"));
   const placeholderImage =
     "https://live.staticflickr.com/7855/buddyicons/130608600@N05_r.jpg?1546695896#130608600@N05";
 
@@ -16,17 +15,24 @@ function Home() {
   return (
     <div>
       <div className="title">
-        <h1>Spacex Missions</h1>
+        <h1>Spacex Launches</h1>
       </div>
       <div className="column-items">
-        {data.ships.map(({ id, image, name }) => (
-          <ColumnItem
-            key={id}
-            id={id}
-            image={image ? image : placeholderImage}
-            name={name}
-          />
-        ))}
+        <Suspense fallback={<div>Loading...</div>}>
+          {data.launchesPast.map(({ id, links, mission_name, details }) => (
+            <ColumnItem
+              key={id}
+              id={id}
+              image={
+                links.flickr_images[0]
+                  ? links.flickr_images[0]
+                  : placeholderImage
+              }
+              name={mission_name}
+              details={details}
+            />
+          ))}
+        </Suspense>
       </div>
     </div>
   );
