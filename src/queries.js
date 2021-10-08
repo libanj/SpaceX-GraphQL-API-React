@@ -11,7 +11,7 @@ export const EXCHANGE_RATES = gql`
 
 export const LAUNCHES = gql`
   query GetLaunches {
-    launchesPast(sort: "mission_name") {
+    launchesPast(sort: "mission_name", limit: 20) {
       id
       links {
         flickr_images
@@ -32,6 +32,7 @@ export const LAUNCH = gql`
       links {
         flickr_images
         mission_patch_small
+        video_link
       }
     }
   }
