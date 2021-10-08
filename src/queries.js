@@ -31,7 +31,7 @@ export const LAUNCH = gql`
       details
       links {
         flickr_images
-        mission_patch
+        mission_patch_small
       }
     }
   }

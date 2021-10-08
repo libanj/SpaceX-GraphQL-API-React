@@ -4,6 +4,22 @@
   .title {
     text-align: center;
   }
+
+  .launch-details {
+    text-align: left;
+  }
+  .launch-photos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .launch-photo {
+      width: 300px;
+      height: 300px;
+      border-radius: 5px;
+      margin: 5px 10px;
+    }
+  }
 }
 
 .column-items {
@@ -66,7 +82,17 @@
 }
 
 @media screen and (max-width: 466px) {
-  .column-items {
-    justify-content: center;
+  .App {
+    .launch-details {
+      text-align: center;
+    }
+
+    .launch-photos {
+      justify-content: center;
+    }
+
+    .column-items {
+      justify-content: center;
+    }
   }
 }
