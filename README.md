@@ -1,5 +1,7 @@
 # Getting Started with Spacex GraphQL API React App
 
+React app that use SpaceX data provided by [SpaceX GraphQL API](https://api.spacex.land/graphql).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
